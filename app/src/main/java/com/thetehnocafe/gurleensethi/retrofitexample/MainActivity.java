@@ -3,6 +3,7 @@ package com.thetehnocafe.gurleensethi.retrofitexample;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final TextView textView = findViewById(R.id.textView_output);
+                TextInputEditText textInputLayout = findViewById(R.id.employee_id);
+                String text = textInputLayout.getText().toString();
+                Integer Id = Integer.parseInt(text);
+
 
                 NetworkService.getInstance()
                         .getJSONApi()
-                        .getEmployeeWithID(1)
+                        .getEmployeeWithID(Id)
 
                         .enqueue(new Callback<Post>() {
                             @Override
